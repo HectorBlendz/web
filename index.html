@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hector Blendz</title>
+    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+</head>
+<body>
+    <!-- Menú de navegación -->
+<nav class="navbar">
+  <div class="logo">Hector Blendz</div>
+  <button class="hamburger" id="hamburger">
+    &#9776; <!-- símbolo ☰ -->
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#inicio">Inicio</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+         <!-- Banner -->
+<header class="banner" id="inicio">
+  <h1>Hector Fragozo</h1>
+  <p>Barbero profesional</p>
+  <div class="carousel">
+    <button class="carousel-btn prev" id="prev">&#10094;</button>
+
+    <div class="carousel-container" id="carousel-container">
+      <div class="carousel-item">
+        <img src="Imagenes/Venpave2-48.jpg" alt="Banner 1">
+      </div>
+      <div class="carousel-item">
+        <img src="Imagenes/PB226286.JPG" alt="Banner 2">
+      </div>
+      <div class="carousel-item">
+        <img src="Imagenes/Venpave2-07.jpg" alt="Banner 3">
+      </div>
+    </div>
+
+    <button class="carousel-btn next" id="next">&#10095;</button>
+  </div>
+</header>
+
+</header>
+
+  <!-- Sección sobre la empresa -->
+        <section class="about" id="empresa">
+            <div class="about-image">
+                <img src="Imagenes/Foto.jpg" alt="Foto">
+            </div>
+            <div class="about-content">
+                <h2>Sobre mí</h2>
+                <p>Hector Fragozo, soy barbero con 4 años de experiencia, apasionado por el arte del grooming masculino y el cuidado personal. A lo largo de este tiempo, he perfeccionado mis técnicas para ofrecer un servicio de calidad, enfocado en la atención al detalle, la higiene y la satisfacción del cliente. Cada corte y afeitado es una oportunidad para ayudar a mis clientes a sentirse y verse mejor.</p>
+            <br>
+                <p>Mi objetivo a futuro es seguir creciendo profesionalmente, abrir mi propia barbería y formar a nuevos talentos, elevando el estándar del servicio en nuestra industria.</p>
+            </div>
+
+        </section>
+
+  <!-- Sección de servicios -->
+<section class="services" id="servicios">
+    <h2>Mis Servicios</h2>
+    <table class="services-table">
+        <tr>
+            <td>
+                <h3>Servicio de corte</h3>
+                <img src="Imagenes/PB226286.JPG" alt="Servicio de corte">
+            </td>
+            <td>
+                <h3>Cuidado del cabello</h3>
+                <img src="Imagenes/Venpave2-07.jpg" alt="Cuidado del cabello">
+            </td>
+            <td>
+                <h3>Herramientas</h3>
+                <img src="Imagenes/Venpave2-44.jpg" alt="Herramientas">
+            </td>
+        </tr>
+    </table>
+</section>
+
+  <!-- Pie de página -->
+<footer class="footer" id="contacto">
+   <div class="footer-container">
+      <p>Sígueme en mis redes sociales:</p>
+      <div class="social-links">
+         <a href="https://www.facebook.com/share/16zJjjsoLz/" target="_blank"><i class="fab fa-facebook"></i></a>
+         <a href="https://www.instagram.com/hbstudio17?igsh=MTlob3F2Y3dlOXg5Mg==" target="_blank"><i class="fab fa-instagram"></i></a>
+      </div>
+
+            <p><i class="fab fa-whatsapp"></i> +573007199457</p> 
+
+      <!-- Formulario de contacto con FormSubmit -->
+      <form action="https://formsubmit.co/fragozo1117@gmail.com" method="POST" class="contact-form">
+         <input type="text" name="name" placeholder="Asunto" required>
+         <input type="email" name="email" placeholder="Tu correo" required>
+         <textarea name="message" placeholder="Escribe tu mensaje" required></textarea>
+         <button type="submit">Enviar</button>
+
+         <!-- Opciones ocultas de FormSubmit -->
+         <input type="hidden" name="_captcha" value="false">
+         <input type="hidden" name="_next" value="http://127.0.0.1:5500/index.html">
+      </form>
+
+      <p>&copy; 2025 Hector Blendz. Todos los derechos reservados (Hector Fragozo).</p>
+   </div>
+</footer>
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+</script>
+<script>
+  const carousel = document.getElementById('carousel-container');
+  const nextBtn = document.getElementById('next');
+  const prevBtn = document.getElementById('prev');
+
+  let index = 0;
+  const total = carousel.children.length;
+
+  function showImage() {
+    const itemWidth = carousel.children[0].clientWidth;
+    carousel.style.transform = `translateX(-${index * itemWidth}px)`;
+  }
+
+  nextBtn.addEventListener('click', () => {
+    index = (index + 1) % total;
+    showImage();
+  });
+
+  prevBtn.addEventListener('click', () => {
+    index = (index - 1 + total) % total;
+    showImage();
+  });
+
+  // Ajuste si cambia el tamaño de la pantalla
+  window.addEventListener('resize', showImage);
+</script>
+<script>
+  const track = document.querySelector('.carousel-track');
+  const slides = Array.from(track.children);
+  const nextButton = document.querySelector('.next');
+  const prevButton = document.querySelector('.prev');
+
+  let currentSlide = 0;
+
+  function updateCarousel() {
+    const slideWidth = slides[0].getBoundingClientRect().width;
+    track.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+  }
+
+  nextButton.addEventListener('click', () => {
+    currentSlide = (currentSlide + 1) % slides.length;
+    updateCarousel();
+  });
+
+  prevButton.addEventListener('click', () => {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    updateCarousel();
+  });
+
+  // Asegura que empiece centrado al cargar
+  window.addEventListener('resize', updateCarousel);
+  updateCarousel();
+</script>
+
+</body>
+</html>
